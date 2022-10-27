@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>auth</title>
+</head>
+<body>
+<script>
+    let PARENT
+    let STORAGE
+    window.onload = () => {
+        PARENT = window.parent;
+        if(!PARENT) return;
+        STORAGE = localStorage.getItem("AppAuthStore")
+        if(STORAGE) STORAGE = JSON.parse(STORAGE);
+        else {
+            STORAGE = {
+                "accessToken": {
+                    "token": "",
+                    "expiration": -1
+                },
+                "refreshToken": {
+                    "token": "",
+                    "expiration": -1
+                }
+            }
+        }
+        PARENT.postMessage(STORAGE.accessToken.token)
+    }
+</script>
+</body>
+</html>

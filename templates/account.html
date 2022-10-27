@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Account</title>
+</head>
+<body>
+    <div class="content">
+        <h1>Welcome ${name}</h1>
+        <h2>Hello</h2>
+    </div>
+    <iframe src="/auth/store" name="ifauth" frameborder="0"></iframe>
+    <script>
+        window.addEventListener("message", function(event) {
+            console.log(event.data)
+        });
+        window.onload = () => {
+            window.frames.ifauth.postMessage("hello")
+            let AUTH_TOKEN = getCookie("AUTH_TOKEN");
+            document.cookie = "s=s"
+            console.log("Bearer " + AUTH_TOKEN)
+            fetch("/api/v1/me", {
+              headers: {
+                Authorization: 'Bearer ' + AUTH_TOKEN
+              }
+            }).then(r=>r.json().then(j=>console.log(j)))
+        }
+
+        function getCookie(name) {
+          const value = `; ${document.cookie}`;
+          const parts = value.split(`; ${name}=`);
+          if (parts.length === 2) return parts.pop().split(';').shift();
+        }
+        function setCookie(name, value, options = {}) {
+
+          options = {
+            path: '/',
+            ...options
+          };
+
+          if (options.expires instanceof Date) {
+            options.expires = options.expires.toUTCString();
+          }
+
+          let updatedCookie = encodeURIComponent(name) + "=" + encodeURIComponent(value);
+
+          for (let optionKey in options) {
+            updatedCookie += "; " + optionKey;
+            let optionValue = options[optionKey];
+            if (optionValue !== true) {
+              updatedCookie += "=" + optionValue;
+            }
+          }
+          document.cookie = updatedCookie;
+        }
+    </script>
+</body>
+</html>

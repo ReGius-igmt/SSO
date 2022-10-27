@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<!-- saved from url=(0027)http://127.0.0.1:7000/login -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Please sign in</title>
+</head>
+<body>
+<div class="container">
+    <h1>Hello please login</h1>
+    <form method="post" action="/signin">
+        <input name="login" type="text">
+        <input name="password" type="text">
+        <input type="submit" content="Login">
+    </form>
+    <form method="post" action="/register">
+        <input name="login" type="text">
+        <input name="password" type="text">
+        <input type="submit" content="Login">
+    </form>
+    <a href="/oauth2/authorization/github">GitHub</a>
+</div>
+</body></html>
