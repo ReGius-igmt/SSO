@@ -1,0 +1,17 @@
+# SSO Authorization Server (ALPHA)
+- [X] Конфигурация сервера
+- [X] Тестовые репозитории
+- [ ] OAuth2 / OpenID
+  - [ ] GitHub
+  - [ ] Google
+  - [ ] VK
+  - [ ] TG
+  - [ ] Microsoft
+- [X] Генерация токена
+    - [X] AccessToken
+    - [X] RefreshToken
+- [X] Хранение данных в LocalStorage
+- [ ] Обмен данными из LocalStorage через iframe
+- [ ] Использование открытого и закрытого ключа
+- [ ] Test ResourceServer
+- [ ] Junit Tests
